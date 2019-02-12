@@ -4,29 +4,22 @@ import java.util.TreeMap;
 
 public class Inventory {
 
-	private TreeMap<String, Food> itemList = new TreeMap<String, Food>();
-	private TreeMap<String, Integer> quantities = new TreeMap<String, Integer>();
+	private TreeMap<String, InventoryItem> inventory = new TreeMap<>();
 
-	public void addItem(Food item, int quantity) {
-		itemList.put(item.getFoodID(), item);
-		quantities.put(item.getFoodID(), quantity);
+	public void addItem(Food food, int quantity) {
+		inventory.put(food.getFoodID(), new InventoryItem(food,quantity));
 	}
 	
-	public Food getItem(String itemID) {
-		return itemList.get(itemID);
+	public InventoryItem getItem(String itemID) {
+		return inventory.get(itemID);
 	}
 	
 	public void checkUpdateInventory(Order order) {
 		// TODO: implementation + throw exception if out of item requested
 	}
 
-	public TreeMap<String, Food> getItemList() {
-		return itemList;
+	public TreeMap<String, InventoryItem> getInventory() {
+		return inventory;
 	}
-	
-	public TreeMap<String, Integer> getQuantities() {
-		return quantities;
-	}
-
 	
 }
