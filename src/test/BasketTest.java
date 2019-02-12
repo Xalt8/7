@@ -1,4 +1,4 @@
-package tests.basket;
+package test;
 
 public class BasketTest {
 }
