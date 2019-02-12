@@ -1,0 +1,9 @@
+FOO10,Cheese Sandwich,Food,2
+FOO20,Ham Sandwich,Food,3
+FOO30,Panini,Food,2.5
+BEV10,Beer,Beverage,0.6
+BEV20,Orange Juice,Beverage,0.4
+BEV30,Bottled Water,Beverage,0.3
+OTH10,Ketchup,Other,0.1
+OTH20,Mustard,Other,0.1
+OTH20,Crisps,Other,0.4
