@@ -1,32 +1,34 @@
 package coffeeShop;
 
+import coffeeShop.exceptions.InventoryItemNotFound;
+
 import java.util.TreeMap;
 
 public class Inventory {
 
-	private TreeMap<String, Food> itemList = new TreeMap<String, Food>();
-	private TreeMap<String, Integer> quantities = new TreeMap<String, Integer>();
+	private TreeMap<String, InventoryItem> inventory = new TreeMap<>();
 
-	public void addItem(Food item, int quantity) {
-		itemList.put(item.getFoodID(), item);
-		quantities.put(item.getFoodID(), quantity);
+	public void addItem(Item item, Integer quantity) {
+		inventory.put(item.getItemId(), new InventoryItem(item,quantity));
 	}
 	
-	public Food getItem(String itemID) {
-		return itemList.get(itemID);
+	public InventoryItem getItem(String itemID) {
+		return inventory.get(itemID);
 	}
 	
 	public void checkUpdateInventory(Order order) {
 		// TODO: implementation + throw exception if out of item requested
 	}
-
-	public TreeMap<String, Food> getItemList() {
-		return itemList;
-	}
-	
-	public TreeMap<String, Integer> getQuantities() {
-		return quantities;
+	// TODO get rid of this?
+	public TreeMap<String, InventoryItem> getInventory() {
+		return inventory;
 	}
 
-	
+	public InventoryItem searchItem(String id) throws InventoryItemNotFound {
+		if(inventory.containsKey(id)){
+			return inventory.get(id);
+		}else{
+			throw new InventoryItemNotFound();
+		}
+	}
 }

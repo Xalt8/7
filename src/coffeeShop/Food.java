@@ -1,33 +1,18 @@
 package coffeeShop;
 
-public class Food{
-	
-	private String foodID;
-	private String foodName;
-	private String foodCategory;
-	private double price;
-	
-	public Food(String foodID,String foodName,String foodCategory,double price) {
-		this.foodID = foodID;
-		this.foodName = foodName;
-		this.foodCategory = foodCategory;
-		this.price = price;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Food extends Item{
+
+	private Date expireDate;
+
+	public Food(String itemId, Double price, String name, String description, Date expireDate) {
+		super(itemId, price, name, description);
+		this.expireDate = expireDate;
 	}
-	
-	public String getFoodID() {
-		return foodID;
+	//TODO modify return String
+	public Date getExpireDate() {
+		return expireDate;
 	}
-	
-	public String getFoodName() {
-		return foodName;
-	}
-	
-	public String getFoodCategory() {
-		return foodCategory;
-	}
-	
-	public double getPrice() {
-		return price;
-	}
-	
 }
