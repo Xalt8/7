@@ -7,13 +7,13 @@ public class Order {
 	private String customerID;
 	private int quantity;
 	private Timestamp timestamp;
-	private Food food;
+	private Item item;
 
-	public Order(String customerID, int quantity, Timestamp timestamp, Food food) {
+	public Order(String customerID, int quantity, Timestamp timestamp, Item item) {
 		this.customerID = customerID;
 		this.quantity = quantity;
 		this.timestamp = timestamp;
-		this.food = food;
+		this.item = item;
 	}
 
 	public String getCustomerID() {
@@ -28,8 +28,8 @@ public class Order {
 		return timestamp;
 	}
 
-	public Food getFood() {
-		return food;
+	public Item getItem() {
+		return item;
 	}
 
 	public void setQuantity(int quantity) {

@@ -1,16 +1,19 @@
 package coffeeShop;
 
+import coffeeShop.interfaces.BasketOpsListener;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Set;
 
-public class Manager {
+public class Manager implements BasketOpsListener {
 	
-	private static Inventory inventory = new Inventory();
-
-	private  static void addFoodItems(){
+	private  Inventory inventory = new Inventory();
+	private  Basket basket;
+	private  void addFoodItems(){
 
 		BufferedReader buff = null;
 
@@ -20,8 +23,8 @@ public class Manager {
 			String inputline = buff.readLine();
 			while(inputline != null) 
 			{
-				Food f = processline(inputline);
-				inventory.addItem(f, 10); //  10 default quantity
+				Item i = processline(inputline);
+				inventory.addItem(i, 10); //  10 default quantity
 				inputline = buff.readLine();
 			}
 		} 
@@ -42,22 +45,39 @@ public class Manager {
 		}
 	}
 
-	private static Food processline(String inputLine) 
-	{
+	private static Item processline(String inputLine) {
 		String data[] = inputLine.split(",");
 		double costOfItem = Double.parseDouble(data[3]);
-		Food f = new Food(data[0],data[1],data[2],costOfItem);
-		return f;
+		Item newItem = null;
+		if(data[2] == "Beverage"){
+			double volume = Double.parseDouble(data[5]);
+			newItem = new Drink(data[0], costOfItem, data[1],data[2],volume);
+		}
+		else if(data[2] == "Food"){
+			//TODO parse date on data[5]
+			newItem = new Food(data[0], costOfItem, data[1],data[2], Calendar.getInstance().getTime());
+		}
+		return newItem;
 	}
 
-	public static void main(String[] args) {
+	public void run(){
 		addFoodItems();
-//		Set<String> keys = inventory.getItemList().keySet();
-//		for (String k : keys) {
-//			System.out.println(k);
-//			System.out.println(inventory.getItem(k).getFoodName() + "\n");
-//		}
+		basket = new Basket(this);
 	}
 
+	@Override
+	public void onBasketUpdate() {
+		//TODO Update inventory
+	}
+
+	@Override
+	public void onBasketAdd() {
+
+	}
+
+	@Override
+	public void onBasketRemove() {
+
+	}
 }
 
