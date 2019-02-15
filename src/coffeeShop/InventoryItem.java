@@ -1,16 +1,16 @@
 package coffeeShop;
 
 public class InventoryItem {
-    private Food food;
+    private Item item;
     private Integer quantity;
 
-    public InventoryItem(Food food, Integer quantity) {
-        this.food = food;
+    public InventoryItem(Item item, Integer quantity) {
+        this.item = item;
         this.quantity = quantity;
     }
 
-    public Food getFood() {
-        return food;
+    public Item getItem() {
+        return item;
     }
 
     public Integer getQuantity() {
