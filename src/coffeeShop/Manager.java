@@ -51,11 +51,23 @@ public class Manager implements BasketOpsListener {
 		Item newItem = null;
 		if(data[2] == "Beverage"){
 			double volume = Double.parseDouble(data[5]);
-			newItem = new Drink(data[0], costOfItem, data[1],data[2],volume);
+			newItem = new Drink(data[0], costOfItem, data[1], data[2], volume);
+			Inventory inventory = new Inventory();
+			int itemQuantity = Integer.parseInt(data[6]);
+			inventory.addItem(newItem, itemQuantity);		
 		}
 		else if(data[2] == "Food"){
 			//TODO parse date on data[5]
 			newItem = new Food(data[0], costOfItem, data[1],data[2], Calendar.getInstance().getTime());
+			Inventory inventory = new Inventory();
+			int itemQuantity = Integer.parseInt(data[6]);
+			inventory.addItem(newItem, itemQuantity);
+		}
+		else if(data[2]=="Other") {
+			newItem = new Other(data[0],costOfItem, data[1],data[2]);
+			Inventory inventory = new Inventory();
+			int itemQuantity = Integer.parseInt(data[5]);
+			inventory.addItem(newItem, itemQuantity);
 		}
 		return newItem;
 	}

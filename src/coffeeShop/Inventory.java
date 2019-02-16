@@ -11,11 +11,11 @@ public class Inventory {
 	public void addItem(Item item, Integer quantity) {
 		inventory.put(item.getItemId(), new InventoryItem(item,quantity));
 	}
-	
+
 	public InventoryItem getItem(String itemID) {
 		return inventory.get(itemID);
 	}
-	
+
 	public void checkUpdateInventory(Order order) {
 		// TODO: implementation + throw exception if out of item requested
 	}

@@ -106,3 +106,4 @@ $RECYCLE.BIN/
 *.iws
 
 # End of https://www.gitignore.io/api/java,linux,macos,windows
+/bin/
